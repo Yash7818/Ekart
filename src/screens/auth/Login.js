@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Dimensions, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {Button,TextInput, Caption} from 'react-native-paper';
 import bg from '../../../assets/BG.png';
 import logo from '../../../assets/logo.png';
 
-function Login(){
-    const [email,setEmail] = useState('');
-    const [pass,setPass] = useState('');
+function Login({navigation}){
     return(
-            <SafeAreaView >
+        <SafeAreaView>
+         <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+           >
                 <View style={styles.container}>
                 <Image source={bg} style={styles.bgimage}/>
                 <Image source={logo} style={styles.logoimg} />
@@ -58,7 +59,7 @@ function Login(){
                     
                     </View>
                     <View style={styles.actions}>
-                        <Button mode="contained" color="#DB4700" style={styles.loginbutton}>
+                        <Button mode="contained" color="#DB4700" style={styles.loginbutton} onPress={()=>navigation.push("Cart")}>
                             Login
                         </Button>
 
@@ -66,7 +67,8 @@ function Login(){
                     </View>
                 </View>
                 </View>
-                </SafeAreaView>
+                  </ScrollView>
+     </SafeAreaView>
     );
 }
 

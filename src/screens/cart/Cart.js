@@ -5,7 +5,7 @@ import { Image } from 'react-native';
 import Listprod from '../../components/Listprod';
 import bg from '../../../assets/Logo.png';
 
-function Cart(){
+function Cart({navigation}){
     const [total,setTotal] = useState('');
     const products=[
         {
@@ -44,7 +44,7 @@ function Cart(){
         setTotal(c);
     },[total])
     return(
-        <SafeAreaView style={{height:"100%"}}>
+        <SafeAreaView style={{height:"100%",backgroundColor:"#fff"}}>
             <Appbar style={styles.appbar}>
                 <Appbar.Action icon="menu" size={35} color="#DB4700"></Appbar.Action>
                 <View style={{flex:1}}></View>
@@ -75,8 +75,8 @@ function Cart(){
                 }
             </ScrollView>
             <View style={styles.proceed}>
-                <Text style={styles.proceedtext}>Subtotal Rs.{total} </Text>
-                <Button color="#DB4700" mode="contained" style={styles.buttonpro}>
+                <Text style={styles.proceedtext}>Subtotal  &#8377;{total} </Text>
+                <Button color="#DB4700" mode="contained" style={styles.buttonpro} >
                     Proceed to buy ({products?.length} items)
                 </Button>
             </View>
@@ -101,13 +101,14 @@ const styles = StyleSheet.create({
         padding:10,
     },
     proceed:{
-        padding:20,
+        padding:20
     },
     proceedtext:{
         textAlign:"center",
         fontSize:20,
         fontWeight:"bold",
-        margin:10
+        margin:10,
+        color:"#000"
     },
     buttonpro:{
         padding:10,

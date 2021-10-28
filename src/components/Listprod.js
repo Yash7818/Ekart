@@ -15,7 +15,7 @@ function Listprod(props){
                 <View style={styles.contentside}>
                     <Text style={styles.title}>{props?.title}</Text>
                     <Text style={styles.desc}>{props?.desc}</Text>
-                    <Text style={styles.price}>{props?.price}</Text>
+                    <Text style={styles.price}>&#8377;{props?.price}</Text>
                     <Text style={styles.color}>Color: {props?.color}</Text>
                     <Text style={styles.avaliability}>{props?.avaliability?"In stock":"Out of stock"}</Text>
                     <View style={styles.actions}>

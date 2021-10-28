@@ -8,6 +8,9 @@
 
 import React from 'react';
 import type {Node} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -28,48 +31,20 @@ import {
 import Login from './src/screens/auth/Login';
 import Cart from './src/screens/cart/Cart';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-       >
-        {/* <Login/> */}
-        <Cart/>
-      </ScrollView>
-    </SafeAreaView>
+        <NavigationContainer>
+          <Stack.Navigator 
+            screenOptions={{
+              headerShown: false
+            }} initialRouteName="Login">
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Cart" component={Cart} />
+          </Stack.Navigator>
+        </NavigationContainer>
   );
 };
 
